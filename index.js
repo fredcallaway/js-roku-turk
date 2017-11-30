@@ -23,10 +23,10 @@ async function main() {
   express()
     .use(express.static(path.join(__dirname, 'public')))
     .use(bodyParser.json())
-    .use('/jsPsych', express.static(__dirname + "/jsPsych"))
+    // .use('/jsPsych', express.static(__dirname + "/jsPsych"))
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
-    .get('/', (req, res) => res.render('pages/go_no_go', {cond: 2}))
+    .get('/', (req, res) => res.render('pages/go_no_go', {condition: 2}))
     .post('/experiment-data', (req, res) => {
       console.log('body', req.body);
       db.collection('test').insertOne({'data': req.body})
