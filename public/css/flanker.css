@@ -1,0 +1,10 @@
+/*
+Things specific to this tutorial,
+including how to centralize your stimuli 
+using a parent and child class!
+*/
+
+body {
+    background: #60626a; 
+    color: white;
+}
