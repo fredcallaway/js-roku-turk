@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+git push
+git subtree push --prefix experiment heroku master
