@@ -57,7 +57,7 @@
       type: "text",
       // We use the handy markdown function (defined in utils.js) to format our text.
       text: markdown(`
-      # Welcome
+      # My Sweet Experiment
 
       This is a reworked version of the go/no-go task constructed in a
       [tutorial](http://docs.jspsych.org/tutorials/rt-task/) 
@@ -127,7 +127,7 @@
       }
     ];
 
-    var all_trials = jsPsych.randomization.repeat(test_stimuli, Math.floor(N_TRIAL / 2), false);
+    var all_trials = jsPsych.randomization.repeat(test_stimuli, Math.floor(N_TRIAL / 2));
 
     var test_block = {
       type: "single-stim",
