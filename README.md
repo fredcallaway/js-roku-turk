@@ -1,39 +1,49 @@
-# node-js-getting-started
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+# Prep
 
-## Running Locally
+## The language: Node.js
+Node.js is a server-side version of JavaScript. NPM is the standard package manager for Node. You can install both [here](https://nodejs.org/en/download/).
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku CLI](https://cli.heroku.com/) installed.
+## The platform: Heroku
+Herkou is a cloud application platform with a generous free tier. Sign up [here](https://signup.heroku.com/). Then follow the setup instructions [here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up). **Don't continue to the next page!**
 
-```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
-```
+Now we can create a Heroku app based on the example experiment in this repo
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+    cd experiment
+    herkou create
+    git push heroku master
+    heroku ps:scale web=1
+    heroku open
 
-## Deploying to Heroku
+## The Database: MongoDB with mLab
+We'll store our data in a MongoDB database. We can set one up easily with Heroku. Unfortunately, you need to verify your account to sign up, and that involves giving Heroku a credit/debit card number. I'm *pretty* sure that they won't ever charge you if you don't sign up for a non-free plan.
 
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-or
+To go this route, try running the following commands. The last line prints the location of the database.  
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+    heroku addons:create mongolab
+    heroku addons:create mongolab
+    heroku config:get MONGODB_URI
 
-## Documentation
+Alternatively, I am told that you can sign up for an mLab database directly [here](https://mlab.com/). However, it's not quite as easy as going through Heroku.
 
-For more information about using Node.js on Heroku, see these Dev Center articles:
 
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+    heroku create
+    git push heroku master
+    heroku open
+
+# JS development
+jsPsych
+http://docs.jspsych.org/
+
+package management
+http://dontkry.com/posts/code/using-npm-on-the-client-side.html
+http://wesbos.com/javascript-modules/
+
+
+# Data Analysis
+
+    heroku addons:open mongolab
+
+# ToDo
+- consent

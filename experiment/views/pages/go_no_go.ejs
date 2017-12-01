@@ -30,15 +30,20 @@
   <!-- Define the experiment in JavaScript. -->
   <script>
 
+
     ///////////
     // Setup //
     ///////////
 
-    var condition = <%- condition %>;
+    const {condition, images} = <%- PARAMS %>;
+    const N_TRIAL = 4;
+  
+    // This ensures that images appear exactly when we tell them to.
+    jsPsych.pluginAPI.preloadImages(images);
 
     // To avoid repeating ourselves,  we create a variable for a piece
     // of html that we use multiple times.
-    var anykey = "<div class='center-content'><b>Press any key to continue.</b></div"
+    var anykey = "<div class='center-content'><b>Press any key to continue.</b></div";
 
 
     //////////////////
@@ -58,7 +63,7 @@
 
       Specifically, the code here is better. 😉
 
-${anykey}
+      ${anykey}
       `)
       // text: markdown(
       //   `# Welcome
@@ -113,7 +118,7 @@ ${anykey}
         {stimulus: "img/orange.png"},
     ];
 
-    var all_trials = jsPsych.randomization.repeat(test_stimuli, 5, false);
+    var all_trials = jsPsych.randomization.repeat(test_stimuli, Math.floor(N_TRIAL / 2), false);
 
     var test_block = {
       type: "single-stim",

@@ -6,7 +6,6 @@
  *
  **/
 var jsPsych = (function() {
-
   var core = {};
 
   //
