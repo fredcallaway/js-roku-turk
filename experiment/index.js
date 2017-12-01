@@ -25,7 +25,8 @@ async function main() {
 
   var params = {
     condition: 2,
-    images: require('fs').readdirSync('public/img/').map(x => 'img/'+x)
+    images: require('fs').readdirSync('public/img/').map(x => 'img/'+x),
+    connected: db ? true : false,
   }
 
   express()

@@ -36,7 +36,9 @@
     ///////////
     console.log('Initializing go/no-go experiment.')
 
-    const {condition, images} = <%- PARAMS %>;
+    const {condition, images, connected} = <%- PARAMS %>;
+    if (connected) console.log('Connected to database.')
+    else console.log('NOT Connected to database!!')
     const N_TRIAL = 4;
   
     // This ensures that images appear exactly when we tell them to.
@@ -115,8 +117,14 @@
     /////////////////
 
     var test_stimuli = [
-        {stimulus: "img/blue.png"},
-        {stimulus: "img/orange.png"},
+      {
+        stimulus: "img/blue.png",
+        data: { response: 'go' }
+      },
+      {
+        stimulus: "img/orange.png",
+        data: { response: 'no-go' }
+      }
     ];
 
     var all_trials = jsPsych.randomization.repeat(test_stimuli, Math.floor(N_TRIAL / 2), false);
