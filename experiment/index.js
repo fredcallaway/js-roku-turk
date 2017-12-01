@@ -1,27 +1,28 @@
 
-// Replace this with the output of:
-// heroku config:get MONGODB_URI
-var uri = process.env.MONGODB_URI;
-
 const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 
 async function main() {
   console.log('Connecting to database...')
-  
-  var db = await require('mongodb').MongoClient.connect(uri)
-    .then(function(db) {
-      console.log('Sucess!');
-      return db
-    })
-    .catch(err => {
-      console.log(err.stack);
-      console.log('Continuing experiment without a database.')
-      // In a real exeriment, you would ask the worker to 
-      // email you reporting the erro and return
-      // the HIT.
-    })
+  var uri = process.env.MONGODB_URI
+  var db = undefined
+  if (uri) {
+    db = await require('mongodb').MongoClient.connect(uri)
+      .then(function(db) {
+        console.log('Sucess!');
+        return db
+      })
+      .catch(err => {
+        console.log(err.stack);
+        console.log('Continuing experiment without a database.')
+        // In a real exeriment, you would ask the worker to 
+        // email you reporting the erro and return
+        // the HIT.
+      })
+  } else {
+    console.log('No config variable MONGODB_URI. Cannot connect to database')
+  }
 
   var params = {
     condition: 2,
