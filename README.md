@@ -1,5 +1,7 @@
 # js-roku-turk
-This guide will (hopefully) help you set up an online experiment using JavaScript, Heroku and Mechanical Turk.
+This guide will (hopefully) help you set up an online experiment using JavaScript, Heroku and Mechanical Turk. The experiment can be viewed [here](https://pacific-temple-83648.herokuapp.com/).
+
+
 
 ## Preliminaries
 We have to install some stuff before we can begin. Remember, nothing good comes easy.
@@ -10,10 +12,19 @@ Node.js is a server-side version of JavaScript. NPM is the standard package mana
 ### The platform: Heroku
 Herkou is a cloud application platform with a generous free tier. Sign up [here](https://signup.heroku.com/). Then follow the setup instructions [here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up). **Don't continue to the next page!**
 
-Now we can create a Heroku app based on the example experiment in this repo
 
+**WARNING:** Everything below this will probably not work.
+
+Now we can create a Heroku app based on the example experiment in this repo.
+    
     cd experiment
-    herkou create
+    git init
+    heroku git:remote -a nameless-thicket-61593
+    npm install
+    git add .
+    git commit -am 'initial commit'
+    git push heroku master
+    heroku create js-roku-turk
     git push heroku master
     heroku ps:scale web=1
     heroku open
